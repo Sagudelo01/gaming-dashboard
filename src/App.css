@@ -1,0 +1,12 @@
+
+/* INICIAR OCULTAR BARRA DE SCROLL */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* FIN OCULTAR BARRA DE SCROLL */
