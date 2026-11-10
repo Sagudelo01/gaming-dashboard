@@ -1,37 +1,33 @@
-# NOVAplay — Gaming Dashboard 🎮
+# XenPlay
 
-Panel de control para una plataforma de videojuegos: juego destacado, estadísticas del jugador, biblioteca con progreso y actividad de amigos. Interfaz oscura, futurista y totalmente responsive.
+A League of Legends companion dashboard. Browse champions, inspect their skins by rarity, track mastery and review a match history — all in a dark, responsive single-page app. Champion and skin artwork is pulled from Riot's public Data Dragon CDN; mastery, win rates, match data and the rarity tiers are sample data used to drive the interface.
 
-![NOVAplay dashboard](docs/preview.png)
+This is a front-end portfolio project and is not affiliated with or endorsed by Riot Games.
 
-## ✨ Funcionalidades
+![Overview](docs/overview.png)
 
-- **Juego destacado** con portada animada y llamadas a la acción
-- **Tarjetas de estadísticas** (horas, logros, nivel, amigos) con microinteracciones
-- **Biblioteca** en grid con portadas en degradado y barra de progreso por juego
-- **Panel de amigos** con estado en línea en tiempo real (mock)
-- **Sidebar** colapsable con navegación y perfil del usuario
-- **Diseño responsive**: de una columna en móvil a layout de dos paneles en escritorio
+## Features
 
-## 🛠️ Stack
+- **Overview** with a featured champion (shuffleable), aggregate stats, top-mastery champions and recent matches.
+- **Champions** view with live text search, role filters and a favorites filter. Favorites persist in `localStorage`.
+- **Collection** of skins grouped and filtered by rarity (Common through Ultimate), each card framed by its tier color.
+- **Champion detail** modal with splash art, a skin selector, mastery progress and performance stats. Closes with the overlay or `Esc`.
+- **Friends** panel with search, an online filter and invites that confirm with a toast.
+- **Match history** with per-game KDA, CS and win/loss styling.
+- Responsive from mobile (collapsible sidebar) to desktop, with hover and active states throughout.
 
-![React](https://img.shields.io/badge/React-19-61DAFB?style=flat&logo=react&logoColor=black)
-![Vite](https://img.shields.io/badge/Vite-7-646CFF?style=flat&logo=vite&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-06B6D4?style=flat&logo=tailwindcss&logoColor=white)
+## Stack
 
-## 🏗️ Arquitectura
+- React 19 with Vite
+- Tailwind CSS v4
+- react-icons
+- Riot Data Dragon for champion and skin images
 
-```
-src/
-├── components/   # Sidebar, Topbar, Hero, StatsRow, Library, FriendsPanel
-├── data.js       # Datos de ejemplo (juegos, stats, amigos)
-├── index.css     # Tokens de diseño y utilidades (Tailwind v4)
-└── App.jsx       # Composición del layout
-```
+## Data
 
-La UI está dividida por responsabilidad y los datos viven separados de la presentación, de modo que conectar una API real solo implica reemplazar `data.js`.
+Images come from Data Dragon over a pinned patch (`src/lib/ddragon.js`). The roster, skin selection, rarity tiers, mastery and match data are defined under `src/data/` so the UI is fully populated without a backend. Swapping in a real API means replacing those modules.
 
-## 🚀 Ejecución local
+## Running locally
 
 ```bash
 git clone https://github.com/Sagudelo01/gaming-dashboard.git
@@ -40,17 +36,30 @@ npm install
 npm run dev
 ```
 
-Abre [http://localhost:5173](http://localhost:5173).
+The app runs at `http://localhost:5173`.
 
-### Scripts
-
-| Comando | Descripción |
+| Script | Description |
 |---|---|
-| `npm run dev` | Servidor de desarrollo con HMR |
-| `npm run build` | Build de producción |
-| `npm run preview` | Previsualiza el build |
-| `npm run lint` | Linter (ESLint) |
+| `npm run dev` | Start the dev server |
+| `npm run build` | Production build |
+| `npm run preview` | Serve the production build |
+| `npm run lint` | Run ESLint |
 
-## 📚 Biblioteca
+## Project structure
 
-![Biblioteca de juegos](docs/library.png)
+```
+src/
+├── components/   UI by responsibility (Sidebar, Topbar, Hero, views, modal)
+├── data/         Champions, friends, matches and rarity definitions
+├── hooks/        useFavorites, useLocalStorage, useToast
+├── lib/          Data Dragon URLs and toast context
+└── App.jsx       View routing and shared state
+```
+
+## Screenshots
+
+| Champions | Collection |
+|---|---|
+| ![Champions](docs/champions.png) | ![Collection](docs/collection.png) |
+
+![Champion detail](docs/champion-detail.png)
