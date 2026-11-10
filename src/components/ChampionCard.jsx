@@ -1,5 +1,5 @@
 import { PiHeartFill, PiHeartStraight, PiStarFill } from 'react-icons/pi'
-import { championSquare } from '../lib/ddragon'
+import { loadingArt } from '../lib/ddragon'
 
 export function ChampionCard({ champion, isFavorite, onToggleFavorite, onOpen }) {
   return (
@@ -19,10 +19,10 @@ export function ChampionCard({ champion, isFavorite, onToggleFavorite, onOpen })
       <button onClick={() => onOpen(champion.id)} className="block w-full text-left">
         <div className="relative aspect-square overflow-hidden">
           <img
-            src={championSquare(champion.id)}
+            src={loadingArt(champion.id)}
             alt={champion.name}
             loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+            className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-linear-to-t from-panel via-panel/20 to-transparent" />
           <div className="absolute bottom-2 left-3 flex items-center gap-1 text-xs font-semibold text-gold">
