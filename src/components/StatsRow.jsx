@@ -1,19 +1,18 @@
 import {
-  PiClockDuotone,
+  PiStarDuotone,
+  PiSwordDuotone,
+  PiSparkleDuotone,
   PiTrophyDuotone,
-  PiLightningDuotone,
-  PiUsersFourDuotone,
 } from 'react-icons/pi'
-import { stats } from '../data'
 
 const ICONS = {
-  clock: PiClockDuotone,
+  star: PiStarDuotone,
+  sword: PiSwordDuotone,
+  sparkle: PiSparkleDuotone,
   trophy: PiTrophyDuotone,
-  bolt: PiLightningDuotone,
-  users: PiUsersFourDuotone,
 }
 
-export function StatsRow() {
+export function StatsRow({ stats }) {
   return (
     <section className="grid grid-cols-2 gap-4 lg:grid-cols-4">
       {stats.map((s, i) => {
@@ -21,15 +20,15 @@ export function StatsRow() {
         return (
           <div
             key={s.label}
-            className="rise group rounded-2xl border border-white/[0.06] bg-panel/60 p-5 transition-all hover:-translate-y-1 hover:border-violet/30"
+            className="rise group rounded-2xl border border-white/6 bg-panel/60 p-5 transition-all hover:-translate-y-1 hover:border-accent/30"
             style={{ animationDelay: `${i * 60}ms` }}
           >
             <div className="flex items-center justify-between">
-              <div className="grid h-10 w-10 place-items-center rounded-xl bg-violet/15 text-violet transition-colors group-hover:bg-violet/25">
+              <div className="grid h-10 w-10 place-items-center rounded-xl bg-accent/15 text-accent transition-colors group-hover:bg-accent/25">
                 <Icon className="text-lg" />
               </div>
-              <span className="rounded-full bg-white/[0.05] px-2 py-0.5 text-xs font-medium text-cyan">
-                {s.delta}
+              <span className="rounded-full bg-white/5 px-2 py-0.5 text-xs font-medium text-gold">
+                {s.tag}
               </span>
             </div>
             <p className="mt-4 text-2xl font-bold tracking-tight">{s.value}</p>

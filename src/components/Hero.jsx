@@ -1,40 +1,61 @@
-import { PiPlayFill, PiStarFill, PiUsersThreeFill } from 'react-icons/pi'
-import { featured } from '../data'
+import { PiEyeDuotone, PiShuffleBold, PiStarFill } from 'react-icons/pi'
+import { splash } from '../lib/ddragon'
+import { RARITY_ORDER } from '../data/rarities'
+import { RarityBadge } from './RarityBadge'
 
-export function Hero() {
+function bestSkin(champion) {
+  return [...champion.skins].sort(
+    (a, b) => RARITY_ORDER.indexOf(a.rarity) - RARITY_ORDER.indexOf(b.rarity),
+  )[0]
+}
+
+export function Hero({ champion, onOpen, onShuffle }) {
+  const skin = bestSkin(champion)
+
   return (
-    <section
-      className={`rise relative overflow-hidden rounded-3xl bg-gradient-to-br ${featured.cover} p-8 sm:p-10`}
-    >
-      <div className="grid-bg absolute inset-0 opacity-40" />
-      <div className="absolute -right-10 -top-10 h-56 w-56 rounded-full bg-white/20 blur-3xl" />
+    <section className="rise relative overflow-hidden rounded-3xl border border-white/6">
+      <img
+        src={splash(champion.id, skin.num)}
+        alt={`${skin.name} splash art`}
+        className="absolute inset-0 h-full w-full object-cover object-top"
+      />
+      <div className="absolute inset-0 bg-linear-to-r from-ink via-ink/85 to-ink/30" />
+      <div className="absolute inset-0 bg-linear-to-t from-ink to-transparent" />
 
-      <div className="relative">
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-black/25 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white/90 backdrop-blur">
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan" />
-          Destacado de la semana
-        </span>
+      <div className="relative p-8 sm:p-10">
+        <div className="flex items-center gap-2">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-black/35 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white/90 backdrop-blur">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
+            Featured champion
+          </span>
+          <RarityBadge rarity={skin.rarity} />
+        </div>
 
-        <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-5xl">
-          {featured.title}
+        <h2 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-6xl">
+          {champion.name}
         </h2>
-        <p className="mt-1 text-white/80">{featured.genre}</p>
+        <p className="mt-1 text-lg text-white/70">{champion.title}</p>
 
-        <div className="mt-5 flex flex-wrap items-center gap-4 text-sm text-white/90">
-          <span className="inline-flex items-center gap-1.5">
-            <PiStarFill className="text-amber-300" /> {featured.rating}
+        <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-white/85">
+          <span className="inline-flex items-center gap-1.5 text-gold">
+            <PiStarFill /> Mastery {champion.mastery.level}
           </span>
-          <span className="inline-flex items-center gap-1.5">
-            <PiUsersThreeFill /> {featured.players} jugando
-          </span>
+          <span>{champion.region}</span>
+          <span>{champion.winRate}% win rate</span>
         </div>
 
         <div className="mt-7 flex flex-wrap gap-3">
-          <button className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-bold text-gray-900 shadow-lg transition-transform hover:scale-105 active:scale-95">
-            <PiPlayFill /> Jugar ahora
+          <button
+            onClick={() => onOpen(champion.id)}
+            className="inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-bold text-ink shadow-lg shadow-accent/30 transition-transform hover:scale-105 active:scale-95"
+          >
+            <PiEyeDuotone /> View champion
           </button>
-          <button className="rounded-xl border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/20">
-            Detalles
+          <button
+            onClick={onShuffle}
+            className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/20"
+          >
+            <PiShuffleBold /> Shuffle
           </button>
         </div>
       </div>
