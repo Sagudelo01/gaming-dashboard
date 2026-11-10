@@ -1,16 +1,56 @@
-# React + Vite
+# NOVAplay — Gaming Dashboard 🎮
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Panel de control para una plataforma de videojuegos: juego destacado, estadísticas del jugador, biblioteca con progreso y actividad de amigos. Interfaz oscura, futurista y totalmente responsive.
 
-Currently, two official plugins are available:
+![NOVAplay dashboard](docs/preview.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Funcionalidades
 
-## React Compiler
+- **Juego destacado** con portada animada y llamadas a la acción
+- **Tarjetas de estadísticas** (horas, logros, nivel, amigos) con microinteracciones
+- **Biblioteca** en grid con portadas en degradado y barra de progreso por juego
+- **Panel de amigos** con estado en línea en tiempo real (mock)
+- **Sidebar** colapsable con navegación y perfil del usuario
+- **Diseño responsive**: de una columna en móvil a layout de dos paneles en escritorio
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Stack
 
-## Expanding the ESLint configuration
+![React](https://img.shields.io/badge/React-19-61DAFB?style=flat&logo=react&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-7-646CFF?style=flat&logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-06B6D4?style=flat&logo=tailwindcss&logoColor=white)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🏗️ Arquitectura
+
+```
+src/
+├── components/   # Sidebar, Topbar, Hero, StatsRow, Library, FriendsPanel
+├── data.js       # Datos de ejemplo (juegos, stats, amigos)
+├── index.css     # Tokens de diseño y utilidades (Tailwind v4)
+└── App.jsx       # Composición del layout
+```
+
+La UI está dividida por responsabilidad y los datos viven separados de la presentación, de modo que conectar una API real solo implica reemplazar `data.js`.
+
+## 🚀 Ejecución local
+
+```bash
+git clone https://github.com/Sagudelo01/gaming-dashboard.git
+cd gaming-dashboard
+npm install
+npm run dev
+```
+
+Abre [http://localhost:5173](http://localhost:5173).
+
+### Scripts
+
+| Comando | Descripción |
+|---|---|
+| `npm run dev` | Servidor de desarrollo con HMR |
+| `npm run build` | Build de producción |
+| `npm run preview` | Previsualiza el build |
+| `npm run lint` | Linter (ESLint) |
+
+## 📚 Biblioteca
+
+![Biblioteca de juegos](docs/library.png)
