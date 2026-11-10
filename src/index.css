@@ -2,20 +2,10 @@
 
 @theme {
   --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
-  --color-ink: #0a0a0f;
-  --color-panel: #121219;
-  --color-violet: #8b5cf6;
-  --color-cyan: #22d3ee;
-}
-
-@keyframes glow-pulse {
-  0%,
-  100% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 0.9;
-  }
+  --color-ink: #0a0b10;
+  --color-panel: #12141c;
+  --color-accent: #4d9fff;
+  --color-gold: #f0b94a;
 }
 
 @keyframes rise {
@@ -29,14 +19,34 @@
   }
 }
 
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 html {
   color-scheme: dark;
 }
 
 body {
   margin: 0;
-  background: #0a0a0f;
-  color: #e7e7ef;
+  background: #0a0b10;
+  color: #e7e8ef;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
@@ -48,23 +58,30 @@ body {
 .rise {
   animation: rise 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
+.toast-in {
+  animation: toast-in 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.fade-in {
+  animation: fade-in 0.2s ease both;
+}
 
-/* Soft grid backdrop */
+/* Subtle hex grid backdrop */
 .grid-bg {
   background-image:
-    linear-gradient(rgba(139, 92, 246, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(139, 92, 246, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(77, 159, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(77, 159, 255, 0.05) 1px, transparent 1px);
   background-size: 44px 44px;
 }
 
 ::selection {
-  background: rgba(139, 92, 246, 0.35);
+  background: rgba(77, 159, 255, 0.35);
 }
 
 *::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 *::-webkit-scrollbar-thumb {
-  background: rgba(139, 92, 246, 0.3);
+  background: rgba(77, 159, 255, 0.28);
   border-radius: 99px;
 }
