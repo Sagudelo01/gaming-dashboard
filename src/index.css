@@ -4,8 +4,8 @@
   --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
   --color-ink: #0a0b10;
   --color-panel: #12141c;
-  --color-accent: #4d9fff;
-  --color-gold: #f0b94a;
+  --color-accent: #8795aa;
+  --color-gold: #c9a86f;
 }
 
 @keyframes rise {
@@ -68,13 +68,13 @@ body {
 /* Subtle hex grid backdrop */
 .grid-bg {
   background-image:
-    linear-gradient(rgba(77, 159, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(77, 159, 255, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(135, 149, 170, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(135, 149, 170, 0.05) 1px, transparent 1px);
   background-size: 44px 44px;
 }
 
 ::selection {
-  background: rgba(77, 159, 255, 0.35);
+  background: rgba(135, 149, 170, 0.35);
 }
 
 *::-webkit-scrollbar {
@@ -82,6 +82,6 @@ body {
   height: 8px;
 }
 *::-webkit-scrollbar-thumb {
-  background: rgba(77, 159, 255, 0.28);
+  background: rgba(135, 149, 170, 0.28);
   border-radius: 99px;
 }
