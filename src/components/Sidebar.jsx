@@ -10,6 +10,7 @@ import {
   PiXBold,
 } from 'react-icons/pi'
 import { Logo } from './Logo'
+import { useToast } from '../hooks/useToast'
 
 const NAV = [
   { id: 'overview', label: 'Overview', icon: PiSquaresFourDuotone },
@@ -39,6 +40,7 @@ function NavButton({ item, active, onClick }) {
 
 export function Sidebar({ view, setView }) {
   const [open, setOpen] = useState(false)
+  const notify = useToast()
 
   const go = (id) => {
     setView(id)
@@ -88,7 +90,10 @@ export function Sidebar({ view, setView }) {
         </div>
 
         <div className="flex flex-col gap-1">
-          <button className="flex w-full items-center gap-3.5 rounded-xl px-4 py-3 text-sm font-medium text-white/55 transition-all hover:bg-white/4 hover:text-white">
+          <button
+            onClick={() => notify('Settings are not available in this demo')}
+            className="flex w-full items-center gap-3.5 rounded-xl px-4 py-3 text-sm font-medium text-white/55 transition-all hover:bg-white/4 hover:text-white"
+          >
             <PiGearSixDuotone className="text-lg" />
             Settings
           </button>
