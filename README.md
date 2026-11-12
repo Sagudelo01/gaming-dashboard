@@ -4,6 +4,8 @@ A League of Legends companion dashboard. Browse champions, inspect their skins b
 
 This is a front-end portfolio project and is not affiliated with or endorsed by Riot Games.
 
+**Live demo:** [gaming-dashboard-pearl.vercel.app](https://gaming-dashboard-pearl.vercel.app)
+
 ![Overview](docs/overview.png)
 
 ## Features
